@@ -1,11 +1,11 @@
 import React from 'react';
 import Track from './Track';
 
-function Playlist({tracks}) {
+function Playlist({tracks, handleRemoveFromUserPlayList}) {
     return (
         <div className='play-list'>
             <h1>Play List</h1>
-            {tracks.map((track) => <Track track={track}/>)}
+            {tracks.map((track) => <Track track={track}><button onClick={() => handleRemoveFromUserPlayList(track.id)}>-</button></Track>)}
             
         </div>
     )
