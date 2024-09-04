@@ -35,11 +35,15 @@ function App() {
     setUserPlayList(prevPlayList => [...prevPlayList, newTrack]);
   }
 
+  function handleRemoveFromUserPlayList(trackId) {
+    setUserPlayList(prevPlayList => prevPlayList.filter(track => track.id !== trackId))
+  }
+
   return (
     <div className="App">
       <SearchBar />
       <SearchResults results={results} handleAddToUserPlayList={handleAddToUserPlayList} />
-      <Playlist tracks={userPlayList}/>
+      <Playlist tracks={userPlayList} handleRemoveFromUserPlayList={handleRemoveFromUserPlayList}/>
     </div>
   );
 }
