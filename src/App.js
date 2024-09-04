@@ -38,8 +38,8 @@ function App() {
   return (
     <div className="App">
       <SearchBar />
-      <SearchResults results={results} />
-      <Playlist />
+      <SearchResults results={results} handleAddToUserPlayList={handleAddToUserPlayList} />
+      <Playlist tracks={userPlayList}/>
     </div>
   );
 }
