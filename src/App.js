@@ -6,37 +6,9 @@ import Playlist from "./components/Playlist";
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
-const exampleTracks = [
-  {
-    artist: 'Halestorm',
-    title: 'Painkiller',
-    album: 'Painkiller',
-    id: 1
-  },
-  {
-    artist: '5 Doors Down',
-    title: 'Kryptonite',
-    album: 'Self Titled Album',
-    id: 2
-  },
-  {
-    artist: 'Nirvana',
-    title: 'Smells Like Teen Spirit',
-    album: "Nirvana's Greatest Hits",
-    id: 3
-  },
-  {
-    artist: 'John Williams',
-    title: 'Imperial March',
-    album: 'The Empire Strikes Back Soundtrack',
-    id: 4
-  }
-]
-
-
 function App() {
   const [accessToken, setAccessToken] = useState('');
-  const [results, setResults] = useState(exampleTracks);
+  const [results, setResults] = useState([]);
   const [userPlayList, setUserPlayList] = useState([]);
   const [playListTitle, setPlayListTitle] = useState('My Playlist');
 
@@ -64,7 +36,7 @@ function App() {
       }
     })
     const data = await response.json();
-    console.log(data);
+    setResults(data.tracks.items);
   }
     
 
