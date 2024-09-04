@@ -5,7 +5,7 @@ function Tracklist({tracks, handleAddToUserPlayList}) {
     return (
         <div className='track-list'>
             <h1>Tracklist</h1>
-            {tracks.map((track) => <Track track={track} key={track.title}><button onClick={() => handleAddToUserPlayList(track)}>+</button></Track>)}
+            {tracks.map((track) => <Track track={track} key={track.id}><button onClick={() => handleAddToUserPlayList(track)}>+</button></Track>)}
         </div>
     )
 }
