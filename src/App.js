@@ -25,6 +25,8 @@ function App() {
   return (
     <div className="App">
       <SearchBar />
+      <SearchResults results={exampleTracks} />
+      <Playlist />
     </div>
   );
 }
