@@ -6,7 +6,7 @@ function Playlist({tracks, handleRemoveFromUserPlayList}) {
         <div className='play-list'>
             <h1>Play List</h1>
             {tracks.map((track) => <Track track={track}><button onClick={() => handleRemoveFromUserPlayList(track.id)}>-</button></Track>)}
-            
+            <button>Save to Spotify</button>
         </div>
     )
 }
