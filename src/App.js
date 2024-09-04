@@ -34,7 +34,8 @@ const exampleTracks = [
 function App() {
   const [results, setResults] = useState(exampleTracks);
   const [userPlayList, setUserPlayList] = useState([]);
-  const [playListTitle, setPlayListTitle] = useState('');
+  const [playListTitle, setPlayListTitle] = useState('My Playlist');
+    
 
   function handleAddToUserPlayList(newTrack) {
     setUserPlayList(prevPlayList => [...prevPlayList, newTrack]);
