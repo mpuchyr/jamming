@@ -3,8 +3,8 @@ import SearchBar from "./components/SearchBar";
 import SearchResults from "./components/SearchResults";
 import Playlist from "./components/Playlist";
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
 const exampleTracks = [
   {
@@ -55,6 +55,17 @@ function App() {
       .then(data => setAccessToken(data.access_token))
 
   }, [])
+
+  async function handleSearch(searchInput) {
+    const response = await fetch(`https://api.spotify.com/v1/search?q=${searchInput}&type=track`,{
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + accessToken
+      }
+    })
+    const data = await response.json();
+    console.log(data);
+  }
     
 
   function handleAddToUserPlayList(newTrack) {
@@ -67,7 +78,7 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar setResults={setResults}/>
+      <SearchBar setResults={setResults} handleSearch={handleSearch} />
       <SearchResults results={results} handleAddToUserPlayList={handleAddToUserPlayList} />
       <Playlist tracks={userPlayList} handleRemoveFromUserPlayList={handleRemoveFromUserPlayList} playListTitle={playListTitle} setPlayListTitle={setPlayListTitle} />
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function SearchBar() {
+function SearchBar({handleSearch}) {
     const [searchInput, setSearchInput] = useState('');
 
     function handleOnChange(e) {
@@ -9,7 +9,7 @@ function SearchBar() {
 
     function handleOnSubmit(e) {
         e.preventDefault();
-        console.log(e);
+        handleSearch(searchInput);
         setSearchInput('');
     }
 
